@@ -5,6 +5,10 @@ import App from "./App";
 import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 
+axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/";
+axios.defaults.headers.common["Authorization"] = "AUTH TOKEN";
+axios.defaults.headers.post["Content-Type"] = "application/json";
+
 var requestIntercepton = axios.interceptors.request.use(
   request => {
     console.log(request);
@@ -29,9 +33,9 @@ var responseIntercepton = axios.interceptors.response.use(
   }
 );
 
-//Eject Interceptors ---- comment if your want to use them
-// axios.interceptors.request.eject(requestIntercepton);
-// axios.interceptors.response.eject(responseIntercepton);
+//Eject Interceptors ---- comment if you want to use them
+axios.interceptors.request.eject(requestIntercepton);
+axios.interceptors.response.eject(responseIntercepton);
 
 ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();
