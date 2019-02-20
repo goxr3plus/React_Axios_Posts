@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "../../../axios";
-import Post from './../../../components/Post/Post';
-import "./Posts.css"
+import Post from "./../../../components/Post/Post";
+import "./Posts.css";
+
 
 class Posts extends Component {
   state = {
@@ -13,6 +14,7 @@ class Posts extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props);
     axios
       .get("/posts")
       .then(response => {
@@ -26,7 +28,7 @@ class Posts extends Component {
         this.setState({ posts: updatedPosts });
       })
       .catch(error => {
-          console.log(error);
+        console.log(error);
         //this.setState({ error: true });
       });
   }
