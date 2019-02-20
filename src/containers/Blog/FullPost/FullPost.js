@@ -40,9 +40,9 @@ class FullPost extends Component {
     let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
     if (this.props.match.params.id)
       post = (
-        <p style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center" }}>
           <Spinner />
-        </p>
+        </div>
       );
     if (this.state.loadedPost) {
       post = (
