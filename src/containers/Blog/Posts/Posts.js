@@ -7,7 +7,8 @@ import FullPost from "./../FullPost/FullPost";
 
 class Posts extends Component {
   state = {
-    posts: []
+    posts: [],
+    loading: false
   };
 
   postSelectedHandler = id => {
@@ -16,6 +17,7 @@ class Posts extends Component {
 
   componentDidMount() {
     //console.log(this.props);
+    this.setState({ loading: true });
     axios
       .get("/posts")
       .then(response => {
@@ -26,16 +28,18 @@ class Posts extends Component {
             author: "Max"
           };
         });
-        this.setState({ posts: updatedPosts });
+        this.setState({ posts: updatedPosts, loading: false });
       })
       .catch(error => {
         console.log(error);
         //this.setState({ error: true });
+        this.setState({ loading: false });
       });
   }
 
   render() {
     let posts = <p style={{ textAlign: "center" }}> Something went wrong!</p>;
+  
     if (!this.state.error)
       posts = this.state.posts.map(post => {
         return (
@@ -52,7 +56,7 @@ class Posts extends Component {
     return (
       <div>
         <section className="Posts">{posts}</section>
-
+        {this.state.loading ?<p style={{ textAlign: "center" }}> Loading... </p> :null}
         <Route path={"/posts/:id"} component={FullPost} />
       </div>
     );
