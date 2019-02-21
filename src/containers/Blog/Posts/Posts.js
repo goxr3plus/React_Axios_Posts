@@ -4,6 +4,7 @@ import Post from "./../../../components/Post/Post";
 import "./Posts.css";
 import { Route } from "react-router-dom";
 import FullPost from "./../FullPost/FullPost";
+import Spinner from "./../../../components/UI/Spinner";
 
 class Posts extends Component {
   state = {
@@ -39,7 +40,7 @@ class Posts extends Component {
 
   render() {
     let posts = <p style={{ textAlign: "center" }}> Something went wrong!</p>;
-  
+
     if (!this.state.error)
       posts = this.state.posts.map(post => {
         return (
@@ -56,7 +57,12 @@ class Posts extends Component {
     return (
       <div>
         <section className="Posts">{posts}</section>
-        {this.state.loading ?<p style={{ textAlign: "center" }}> Loading... </p> :null}
+        {this.state.loading ? (
+          <div style={{ textAlign: "center" }}>
+            {" "}
+            <Spinner />
+          </div>
+        ) : null}
         <Route path={"/posts/:id"} component={FullPost} />
       </div>
     );
