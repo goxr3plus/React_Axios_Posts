@@ -1,23 +1,23 @@
 {
   "homepage": "https://github.com/goxr3plus/React_Axios_Posts",
   "name": "react-complete-guide",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "deploy": "gh-pages -d build",
-    "predeploy": "npm run build",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.0.13"
+    "react-scripts": "2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1"
